@@ -1,5 +1,7 @@
 package com.amit.constructorInjection;
 
+import com.amit.serviceProvider.EmailServiceProvider;
+
 public class Client {
 
 	public static void main(String[] args) {

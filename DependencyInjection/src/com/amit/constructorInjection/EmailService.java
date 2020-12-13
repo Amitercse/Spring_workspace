@@ -1,5 +1,7 @@
 package com.amit.constructorInjection;
 
+import com.amit.serviceProvider.EmailServiceProvider;
+
 public class EmailService {
 
 	private EmailServiceProvider serviceProvider;

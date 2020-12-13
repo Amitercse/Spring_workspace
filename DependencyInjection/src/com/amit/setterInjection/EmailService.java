@@ -1,6 +1,6 @@
 package com.amit.setterInjection;
 
-import com.amit.constructorInjection.EmailServiceProvider;
+import com.amit.serviceProvider.EmailServiceProvider;
 
 public class EmailService {
 
