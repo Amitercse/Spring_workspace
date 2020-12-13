@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="employee1" class="com.amit.beanFactory.Employee">
+		<constructor-arg name="employeeId" value="1" />
+		<constructor-arg name="employeeName"
+			value="employee 1" />
+		<constructor-arg name="department"
+			value="software development" />
+		<constructor-arg name="address"
+			ref="address" />
+	</bean>
+	<!-- We can have multiple constructor injections, keeping bean id different -->
+	<bean id="employee2" class="com.amit.beanFactory.Employee">
+	
+	</bean>
+	<!-- We can have multiple same constructor injections of same class, keeping 
+		bean id different -->
+	<bean id="employee3" class="com.amit.beanFactory.Employee">
+		<constructor-arg name="employeeId" value="3" />
+		<constructor-arg name="employeeName"
+			value="employee 3" />
+		<constructor-arg name="department"
+			value="software development" />
+		<constructor-arg name="address"
+			ref="address" />
+	</bean>
+	<!-- Setter injection for bean factory -->
+	<bean id="employee4" class="com.amit.beanFactory.Employee">  
+		<property name="employeeId"> 
+			<value>4</value>  
+		</property>  
+		<property name="employeeName">  
+			<value>Employee 4</value>  
+		</property>  
+		<property name="department">  
+			<value>HR department</value>  
+		</property> 
+		<property name="address" ref="address"> 
+		</property> 
+	</bean> 
+	<!-- Constructor injection for address --> 
+	<bean id="address" class="com.amit.beanFactory.Address">
+		<constructor-arg name="streetName" value="street 1" />
+		<constructor-arg name="locality"
+			value="Kormangala" />
+		<constructor-arg name="cityName"
+			value="Bangalore" />
+	</bean>
+</beans>
