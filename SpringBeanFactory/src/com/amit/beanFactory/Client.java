@@ -13,6 +13,9 @@ public class Client {
 	    Client client = new Client();
 	    client.getBeanViaConstructorInjection(factory);
 	    client.getBeanViaSetterInjection(factory);
+	    // Use below code to use application context to read bean from xml
+	//    ApplicationContext context= new ClassPathXmlApplicationContext("beanFactory-config.xml");
+	//    Employee emp1= (Employee) context.getBean("employee1");
 	}
 	
 	private void getBeanViaConstructorInjection(BeanFactory factory)
