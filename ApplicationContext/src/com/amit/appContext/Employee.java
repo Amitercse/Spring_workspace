@@ -12,10 +12,11 @@ public class Employee {
 	private String department;
 	private Address address;
 	
-	public Employee() {
-		this.employeeId=1;
+	public Employee() 
+	{ 
+		this.employeeId=1; 
 		this.employeeName= "employee 1";
-		this.department="department";
+		this.department="department"; 
 	}
 	
 	@Autowired
@@ -26,8 +27,7 @@ public class Employee {
 		this.department= dept;
 		this.address= address;
 	}
-	
-	@Autowired
+
 	public void setAddress(Address address)
 	{
 		System.out.println("setter call");

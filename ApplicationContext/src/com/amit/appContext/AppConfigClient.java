@@ -9,7 +9,10 @@ public class AppConfigClient {
 		ApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
 		Employee emp= context.getBean(Employee.class);
 		System.out.println(emp);
-		Employee emp1= (Employee) context.getBean("employeeBean");
-		System.out.println(emp1);
+		// Get beans based on method level @Bean annotation
+	//	Employee emp1= (Employee) context.getBean("employeeBean");
+	//	System.out.println(emp1);
+	//	Address address= (Address) context.getBean("empAddress");
+	//	System.out.println(address);
 	}
 }

@@ -8,9 +8,20 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "com.amit")
 public class AppConfig {
 	
-	@Bean
+	/*
+	 * Use @Bean annotation to instantiate spring bean. If we are using @Bean
+	 * annotation then no need of @Component annotation.
+	 */
+/*	@Bean
 	public Employee employeeBean()
 	{
-		return new Employee();
+		return new Employee(11,"emp2","HR", empAddress());
 	}
+	
+	@Bean
+	public Address empAddress()
+	{
+		return new Address(111, "locality 1", "city 1");
+	}
+	*/
 }
