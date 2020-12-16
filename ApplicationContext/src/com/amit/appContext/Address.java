@@ -15,6 +15,7 @@ public class Address {
 		this.localityName= locality;
 		this.city= city;
 	}
+	
 	/**
 	 * @return the streetNo
 	 */

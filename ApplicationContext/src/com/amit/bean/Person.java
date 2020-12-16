@@ -12,7 +12,7 @@ public class Person {
 	private int age;
 	
 	public Person() {
-		System.out.println("Invoking default constructor");
+		
 	}
 	/**
 	 * @return the name

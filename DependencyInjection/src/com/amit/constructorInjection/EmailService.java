@@ -15,6 +15,9 @@ public class EmailService {
 	}
 
 	public void sendMail(String receiver, String message) {
+		/*
+		 * Before sending mail we can perform business operation here.
+		 */
 		serviceProvider.sendMail(receiver, message);
 	}
 }

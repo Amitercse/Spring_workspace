@@ -17,7 +17,7 @@ public class Client {
 			if(field.isAnnotationPresent(Dependency.class))
 			{
 				field.setAccessible(true);
-				EmailServiceProvider serviceProvider= new GmailServiceProvider();
+				EmailServiceProvider serviceProvider= new OutlookServiceProvider();
 				field.set(emailService, serviceProvider);
 			}
 		}

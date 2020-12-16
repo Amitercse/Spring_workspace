@@ -28,6 +28,7 @@ public class Employee {
 		this.address= address;
 	}
 
+//	@Autowired
 	public void setAddress(Address address)
 	{
 		System.out.println("setter call");
