@@ -5,23 +5,18 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.amit")
+@ComponentScan(basePackages = "com.amit.appContext")
 public class AppConfig {
 	
 	/*
 	 * Use @Bean annotation to instantiate spring bean. If we are using @Bean
 	 * annotation then no need of @Component annotation.
 	 */
-/*	@Bean
-	public Employee employeeBean()
+	@Bean
+	public Customer customer()
 	{
-		return new Employee(11,"emp2","HR", empAddress());
+		// Here even we can pass dynamic values to constructor
+		return new Customer(1,"customer1");
 	}
 	
-	@Bean
-	public Address empAddress()
-	{
-		return new Address(111, "locality 1", "city 1");
-	}
-	*/
 }

@@ -21,7 +21,7 @@ public class Client {
 	private void getBeanViaConstructorInjection(BeanFactory factory)
 	{
 		// Getting bean initialized using parameterized constructor
-	    Employee emp1 = (Employee) factory.getBean("employee1");
+		Employee emp1 = (Employee) factory.getBean("employee1");
 	    System.out.println(emp1);
 	    // Getting bean initialized using no-arg constructor
 	    Employee emp2 = (Employee) factory.getBean("employee2");
@@ -30,10 +30,10 @@ public class Client {
 	    emp2.setEmployeeName("employee 2");
 	    emp2.setDepartment("HR department");
 	    emp2.setAddress(address);
-	    System.out.println(emp2);
+	    System.out.println(emp2); 
 	    // Accessing bean having multiple parameterized constructor injections
 	    Employee emp3 = (Employee) factory.getBean("employee3");
-	    System.out.println(emp3);
+	    System.out.println(emp3);  
 	}
 	
 	private void getBeanViaSetterInjection(BeanFactory factory)

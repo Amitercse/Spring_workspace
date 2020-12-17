@@ -7,7 +7,7 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Employee implements BeanNameAware, BeanFactoryAware {
+public class User implements BeanNameAware, BeanFactoryAware {
 
 	private int id;
 	private String name;
