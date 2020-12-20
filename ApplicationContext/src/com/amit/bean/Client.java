@@ -11,10 +11,11 @@ public class Client {
 		System.out.println(person);
 		Person person1= context.getBean(Person.class);
 		System.out.println(person1);
-	/*	User user= context.getBean(User.class);
+		User user= (User) context.getBean("user");
 		System.out.println(user);
+		System.out.println(user.getContactDetails());
 		// Get employee bean using bean name
-		User employee1= (User) context.getBean(user.getBeanName());
-		System.out.println(employee1);   */
+		User user1= (User) context.getBean(user.getBeanName());
+		System.out.println(user1); 
 	}
 }

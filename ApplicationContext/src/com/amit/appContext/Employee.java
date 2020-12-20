@@ -10,10 +10,12 @@ public class Employee {
 	private int employeeId;
 	private String employeeName;
 	private String department;
+//	@Autowired
 	private Address address;
 	
 	public Employee() 
 	{ 
+		System.out.println("default constructor");
 		this.employeeId=1; 
 		this.employeeName= "employee 1";
 		this.department="department"; 
@@ -32,6 +34,13 @@ public class Employee {
 	public void setAddress(Address address)
 	{
 		System.out.println("setter call");
+		this.address= address;
+	}
+	
+//	@Autowired
+	public void setNewAddress(Address address)
+	{
+		System.out.println("new setter call");
 		this.address= address;
 	}
 

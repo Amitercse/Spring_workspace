@@ -2,6 +2,8 @@ package com.amit.beanFactory;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -11,11 +13,12 @@ public class Client {
 		Resource res = new ClassPathResource("beanFactory-config.xml");
 	    BeanFactory factory = new XmlBeanFactory(res);
 	    Client client = new Client();
-	    client.getBeanViaConstructorInjection(factory);
-	    client.getBeanViaSetterInjection(factory);
+	//    client.getBeanViaConstructorInjection(factory);
+	//    client.getBeanViaSetterInjection(factory);
 	    // Use below code to use application context to read bean from xml
-	//    ApplicationContext context= new ClassPathXmlApplicationContext("beanFactory-config.xml");
-	//    Employee emp1= (Employee) context.getBean("employee1");
+	    ApplicationContext context= new ClassPathXmlApplicationContext("beanFactory-config.xml");
+	    Employee emp1= (Employee) context.getBean("employee1");
+	    System.out.println(emp1);
 	}
 	
 	private void getBeanViaConstructorInjection(BeanFactory factory)
