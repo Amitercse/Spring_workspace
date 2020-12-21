@@ -9,5 +9,24 @@
   
   <context:annotation-config/>
   <context:component-scan base-package="com.amit.appContext"/>
-
+  
+  <bean id="xmlUser" class="com.amit.bean.UserXmlBean" init-method="init" destroy-method="destroy">
+  
+  </bean>
+  
+  <bean id="controller" class="com.amit.autowire.Controller" autowire="byName">
+  
+  </bean>
+  
+  <bean id="serviceBean" class="com.amit.autowire.ServiceImpl">
+  
+  </bean>
+  
+  <bean id="controller1" class="com.amit.autowire.Controller1" autowire="constructor">
+  
+  </bean>
+  
+  <bean id="service1" class="com.amit.autowire.Service1">
+  
+  </bean>
 </beans>

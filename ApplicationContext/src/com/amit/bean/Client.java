@@ -2,6 +2,7 @@ package com.amit.bean;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Client {
 
@@ -17,5 +18,9 @@ public class Client {
 		// Get employee bean using bean name
 		User user1= (User) context.getBean(user.getBeanName());
 		System.out.println(user1); 
+		// Reading custom init and destroy using xml
+		ApplicationContext xmlContext= new ClassPathXmlApplicationContext("applicationContext.xml");
+		UserXmlBean xmlBean= (UserXmlBean) xmlContext.getBean("xmlUser");
+		System.out.println(xmlBean);
 	}
 }
