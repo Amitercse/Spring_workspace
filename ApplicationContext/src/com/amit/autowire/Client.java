@@ -9,7 +9,8 @@ public class Client {
 		ApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
 		Controller controller= (Controller) context.getBean("controller");
 		controller.invokeService();
-		Controller1 controller1= (Controller1) context.getBean("controller1");
-		controller1.invokeService();
+		// Constructor type autowiring test
+	/*	Controller1 controller1= (Controller1) context.getBean("controller1");
+		controller1.invokeService(); */
 	}
 }

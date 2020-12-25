@@ -11,6 +11,7 @@ public class Controller {
 	
 	public void setServiceBean(Service service)
 	{
+		System.out.println("Setting service to controller");
 		this.serviceBean= service;
-	}
+	} 
 }
