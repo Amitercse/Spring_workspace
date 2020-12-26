@@ -11,6 +11,7 @@ module ApplicationContext {
 	requires spring.context;
 	requires java.annotation;
 	requires javax.inject;
+	requires jdk.jdi;
 	exports com.amit.appContext;
 	exports com.amit.autowire;
 	opens com.amit.appContext;
@@ -19,4 +20,5 @@ module ApplicationContext {
 	opens com.amit.bean;
 	opens com.amit.collectionDependency;
 	opens com.amit.lazy;
+	opens com.amit.i18n;
 }

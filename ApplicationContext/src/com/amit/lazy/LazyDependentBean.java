@@ -4,7 +4,7 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-@Lazy
+// @Lazy
 @Component
 public class LazyDependentBean implements BeanNameAware{
 
