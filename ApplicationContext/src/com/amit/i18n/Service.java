@@ -17,7 +17,9 @@ public class Service {
 		Locale customLocale= new Locale("custom", "custom");
 	//	Locale.setDefault(Locale.FRANCE);
 	//	Locale.setDefault(customLocale);
-		String message= messageSource.getMessage("app.message", new Object[] {"default message"}, Locale.getDefault());
+		String message= messageSource.getMessage("app.message", null, Locale.getDefault());
 		System.out.println(message);
+		String greetingMessage= messageSource.getMessage("greeting.message", new Object[] {"ladies", "gentlemen"}, Locale.getDefault());
+		System.out.println(greetingMessage);
 	}
 }
