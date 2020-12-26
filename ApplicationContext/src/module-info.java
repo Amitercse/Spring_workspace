@@ -18,4 +18,5 @@ module ApplicationContext {
 	opens com.amit.multipleConfig;
 	opens com.amit.bean;
 	opens com.amit.collectionDependency;
+	opens com.amit.lazy;
 }
