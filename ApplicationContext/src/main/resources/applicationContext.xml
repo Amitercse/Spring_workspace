@@ -8,6 +8,7 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
   
   <context:annotation-config/>
+  <context:property-placeholder location="classpath:app.properties" />
   <context:component-scan base-package="com.amit.amit"/>
   
   <bean id="xmlUser" class="com.amit.bean.UserXmlBean" init-method="init" destroy-method="destroy">
@@ -87,5 +88,15 @@
   	<constructor-arg name="name">
   		<value>Student3</value>
   	</constructor-arg>
+  </bean>
+  
+  <bean id="messageXmlSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages" />
+  </bean>
+   
+  <bean id="xmlUser1" class="com.amit.spel.XmlUser">
+  	<property name="firstName" value = "${app.xmlUser.firstName}" />
+  	<property name="lastName" value = "${app.xmlUser.lastName}" />
+  	<property name="dateOfBirth" value = "${app.xmlUser.dob}" />
   </bean>
 </beans>

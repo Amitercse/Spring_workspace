@@ -21,4 +21,5 @@ module ApplicationContext {
 	opens com.amit.collectionDependency;
 	opens com.amit.lazy;
 	opens com.amit.i18n;
+	opens com.amit.spel;
 }
