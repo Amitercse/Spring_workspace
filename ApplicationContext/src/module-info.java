@@ -17,4 +17,5 @@ module ApplicationContext {
 	opens com.amit.annotation;
 	opens com.amit.multipleConfig;
 	opens com.amit.bean;
+	opens com.amit.collectionDependency;
 }

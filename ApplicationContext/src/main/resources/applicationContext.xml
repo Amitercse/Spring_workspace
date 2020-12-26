@@ -8,7 +8,7 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
   
   <context:annotation-config/>
-  <context:component-scan base-package="com.amit.appContext"/>
+  <context:component-scan base-package="com.amit.amit"/>
   
   <bean id="xmlUser" class="com.amit.bean.UserXmlBean" init-method="init" destroy-method="destroy">
   
@@ -28,5 +28,64 @@
   
   <bean id="service1" class="com.amit.autowire.Service1">
   
+  </bean>
+  
+  <bean id="xmlConfigDept" class="com.amit.collectionDependency.XMLConfigDept">
+  <property name="dummyList">
+  	<list>
+  		<value>One</value>
+  		<value>Two</value>
+  		<value>Three</value>
+  		<value>Four</value>
+  	</list>
+  </property>
+  <property name="dummyMap">
+  	<map>
+    	<entry key = "1" value = "One"/>
+     	<entry key = "2" value = "Two"/>
+     	<entry key = "3" value = "Three"/>
+     	<entry key = "4" value = "Four"/>
+  	</map>
+  </property>
+  <property name="studentList">
+  	<list>
+    	<ref bean="xmlConfigStudent1"></ref>
+    	<ref bean="xmlConfigStudent2"></ref>
+    	<ref bean="xmlConfigStudent3"></ref>
+  	</list>
+  </property>
+  <property name="studentMap">
+    <map>
+    	<entry key = "1" value-ref = "xmlConfigStudent1"/>
+     	<entry key = "2" value-ref = "xmlConfigStudent2"/>
+     	<entry key = "3" value-ref = "xmlConfigStudent3"/>
+  	</map>
+  </property>
+  </bean>
+  
+  <bean id="xmlConfigStudent1" class="com.amit.collectionDependency.XMLConfigStudent">
+  	<constructor-arg name="id">
+  		<value>1</value>
+  	</constructor-arg>
+  	<constructor-arg name="name">
+  		<value>Student1</value>
+  	</constructor-arg>
+  </bean>
+  
+  <bean id="xmlConfigStudent2" class="com.amit.collectionDependency.XMLConfigStudent">
+  	<constructor-arg name="id">
+  		<value>2</value>
+  	</constructor-arg>
+  	<constructor-arg name="name">
+  		<value>Student2</value>
+  	</constructor-arg>
+  </bean>
+  <bean id="xmlConfigStudent3" class="com.amit.collectionDependency.XMLConfigStudent">
+  	<constructor-arg name="id">
+  		<value>3</value>
+  	</constructor-arg>
+  	<constructor-arg name="name">
+  		<value>Student3</value>
+  	</constructor-arg>
   </bean>
 </beans>
