@@ -13,12 +13,13 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "com.amit.collectionDependency")
 public class AppConfig {
 	
+	@Bean
 	public Map<String, Student> studentMap()
 	{
 		Map map= new HashMap<String, Student>();
-		map.put("1", student1());
-		map.put("2", student2());
-		map.put("3", student3());
+		map.put("student1", student1());
+		map.put("student2", student2());
+		map.put("student3", student3());
 		return map;
 	}
 

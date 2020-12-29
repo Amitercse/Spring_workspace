@@ -11,7 +11,7 @@ public class Client {
 		Department dept= context.getBean(Department.class);
 		System.out.println(dept);
 		System.out.println(dept.getStudentList());
-		System.out.println(dept.getStudentMap()); 
+		System.out.println(dept.getStudentMap());
 		// Reading collection dependency from xml config
 	/*	ApplicationContext xmlContext= new ClassPathXmlApplicationContext("applicationContext.xml");
 		XMLConfigDept xmlConfigDept= (XMLConfigDept) xmlContext.getBean("xmlConfigDept");
