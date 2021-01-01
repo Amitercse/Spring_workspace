@@ -1,7 +1,5 @@
 package com.amit.spel;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +17,7 @@ public class User {
 	@Value("#{util.calculateAge(user.dateOfBirth)}")
 	private int age;
 	@Value("#{user.age ge 18}")
-	private boolean isBooleanAge;
+	private boolean isLegalAge;
 	@Value("#{15 + 20}")
 	private int dummyValue;
 	@Value("${app.property1}")
@@ -99,14 +97,14 @@ public class User {
 	 * @return the isBooleanAge
 	 */
 	public boolean isBooleanAge() {
-		return isBooleanAge;
+		return isLegalAge;
 	}
 
 	/**
 	 * @param isBooleanAge the isBooleanAge to set
 	 */
 	public void setBooleanAge(boolean isBooleanAge) {
-		this.isBooleanAge = isBooleanAge;
+		this.isLegalAge = isBooleanAge;
 	}
 
 	/**
@@ -126,7 +124,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", fullName=" + fullName + ", dateOfBirth="
-				+ dateOfBirth + ", age=" + age + ", isBooleanAge=" + isBooleanAge + ", dummyValue=" + dummyValue
+				+ dateOfBirth + ", age=" + age + ", isLegalAge=" + isLegalAge + ", dummyValue=" + dummyValue
 				+ ", propertyName=" + propertyName + "]";
 	}
  

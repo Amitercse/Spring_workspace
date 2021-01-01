@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
 public class Client {
 
 	public static void main(String[] args) {
@@ -14,9 +15,12 @@ public class Client {
 		Service service= context.getBean(Service.class);
 		service.readMessages();
 		// Read i18n properties from xml
+		Locale.setDefault(Locale.FRANCE);
 		ApplicationContext xmlContext= new ClassPathXmlApplicationContext("applicationContext.xml");
 		MessageSource messageSource= (MessageSource) xmlContext.getBean("messageXmlSource");
 		String message= messageSource.getMessage("app.message", null, Locale.getDefault());
+		String greetingMessage= messageSource.getMessage("greeting.message", new Object[] {"ladies", "gentlemen"}, Locale.getDefault());
 		System.out.println("message from client: "+message);
+		System.out.println("greeting message: "+greetingMessage);
 	}
 }
