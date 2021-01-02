@@ -13,7 +13,7 @@ import com.amit.model.Employee;
 import com.amit.service.Service;
 import com.amit.service.ServiceImpl;
 
-public class LoginController extends HttpServlet {
+public class DemoController extends HttpServlet {
 
 	/**
 	 * Default serial version id
