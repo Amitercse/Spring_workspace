@@ -12,4 +12,6 @@ public interface EmployeeService {
 	public void saveEmployeeData(Employee emp);
 	
 	public List<String> getDepartmentList();
+	
+	public List<Employee> getEmployeeList();
 }

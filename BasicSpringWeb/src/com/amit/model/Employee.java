@@ -6,10 +6,34 @@ import org.springframework.stereotype.Component;
 public class Employee {
 
 	private String userName;
+	private String name;
 	private String password;
 	private String dateOfBirth;
 	private String email;
 	private String department;
+	
+	/**
+	 * Default constructor
+	 */
+	public Employee() {
+		super();
+	}
+	/**
+	 * @param userName
+	 * @param password
+	 * @param dateOfBirth
+	 * @param email
+	 * @param department
+	 */
+	public Employee(String userName, String name, String password, String dateOfBirth, String email, String department) {
+		super();
+		this.userName = userName;
+		this.name = name;
+		this.password = password;
+		this.dateOfBirth = dateOfBirth;
+		this.email = email;
+		this.department = department;
+	}
 	/**
 	 * @return the userName
 	 */
@@ -70,10 +94,21 @@ public class Employee {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 	@Override
 	public String toString() {
-		return "Employee [userName=" + userName + ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", email="
-				+ email + ", department=" + department + "]";
+		return "Employee [userName=" + userName + ", name=" + name + ", password=" + password + ", dateOfBirth="
+				+ dateOfBirth + ", email=" + email + ", department=" + department + "]";
 	}
 }

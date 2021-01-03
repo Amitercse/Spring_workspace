@@ -25,4 +25,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return deptList;
 	}
 
+	@Override
+	public List<Employee> getEmployeeList() {
+		Employee emp1= new Employee("emp1", "Employee1", "emp1", "01/01/1993", "emp1@gmail.com", "HR");
+		Employee emp2= new Employee("emp2", "Employee2", "emp2", "03/01/1994", "emp2@gmail.com", "Developer");
+		Employee emp3= new Employee("emp3", "Employee3", "emp3", "03/03/1992", "emp3@gmail.com", "Sales");
+		List<Employee> empList= new ArrayList<>();
+		empList.add(emp1);
+		empList.add(emp2);
+		empList.add(emp3);
+		return empList;
+	}
+
 }

@@ -7,6 +7,7 @@
 <title>Application Home</title>
 </head>
 <body>
-<a href= "registerEmployee.view">Register an employee</a>
+<a href= "registerEmployee.view">Register an employee</a><br>
+<a href= "getEmployee.view">Display Employees</a>
 </body>
 </html>
