@@ -9,7 +9,7 @@
 </head>
 <body>
 <h4>List of employees</h4>
-<table>
+<table border="1">
 <tr>
 	<th>User Name</th>
 	<th>Name</th>
