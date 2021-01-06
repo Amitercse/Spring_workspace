@@ -40,6 +40,12 @@
                     <td><form:select path="department" items="${deptList}" /></td>
                 </tr>
                 <tr>
+                    <td>Dummy param:</td>
+                    <td>
+                    <input type="text" name="dummyParam"/>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2" align="center"><input type="submit" value="<spring:message code="label.user.register" />" /></td>
                 </tr>
             </table>

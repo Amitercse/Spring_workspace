@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amit.model.Employee;
 import com.amit.service.EmployeeService;
@@ -32,19 +32,10 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/register.view")
-	public String registerEmployee(@ModelAttribute("emp") Employee employee)
+	public String registerEmployee(@ModelAttribute("emp") Employee employee, @RequestParam("dummyParam") String dummyParam)
 	{
+		System.out.println("Dummy param value: "+ dummyParam);
 		employeeService.saveEmployeeData(employee);
 		return "registrationSuccess";
-	}
-	
-	@RequestMapping("/getEmployee.view")
-	public ModelAndView getEmployeeList()
-	{
-		ModelAndView modelAndView= new ModelAndView();
-		List<Employee> empList= employeeService.getEmployeeList();
-		modelAndView.setViewName("employeeDisplay");
-		modelAndView.addObject("empList", empList);
-		return modelAndView;
 	}
 }
