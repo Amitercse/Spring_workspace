@@ -19,6 +19,7 @@ public class AppInitializer implements WebApplicationInitializer  {
 	  // we can also register one class- context.register(AppConfig.class)
 	  context.setConfigLocation("com.amit.config");
       servletContext.addListener(new ContextLoaderListener(context));
+      servletContext.setInitParameter("spring.profiles.active", "dev");
       ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
       dispatcher.setLoadOnStartup(1);
       dispatcher.addMapping("*.view");
