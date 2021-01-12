@@ -1,9 +1,12 @@
 package com.amit.jdbc;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -91,4 +94,24 @@ public class UserDaoImpl implements UserDao {
 		return userLocationMap;
 	}
 
+	public void batchInsert(List<User> listUsers) {
+		String sql = "insert into user values(?,?,?,?)";
+
+		jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
+
+			@Override
+			public void setValues(PreparedStatement ps, int i) throws SQLException {
+				User user = listUsers.get(i);
+				ps.setInt(1, user.getId());
+				ps.setString(2, user.getName());
+				ps.setString(3, user.getDateOfBirth());
+				ps.setString(4, user.getLocation());
+			}
+
+			@Override
+			public int getBatchSize() {
+				return listUsers.size();
+			}
+		});
+	}
 }

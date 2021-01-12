@@ -21,4 +21,6 @@ public interface UserDao {
 	public void deleteUser(int id);
 	
 	public Map<String, List<User>> userListGroupedByLoc();
+	
+	public void batchInsert(List<User> userList);
 }

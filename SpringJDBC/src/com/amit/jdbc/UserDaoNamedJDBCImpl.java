@@ -1,10 +1,13 @@
 package com.amit.jdbc;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -45,6 +48,14 @@ public class UserDaoNamedJDBCImpl implements UserDaoNamedJDBC {
 		{
 			System.out.println("Some error occurred");
 		}
+	}
+	
+	@Override
+	public void saveUserInBatch(List<User> userList) {
+		String query= "insert into user values(:id, :name, :dateOfBirth, :location)";
+		SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(userList.toArray());
+		namedJDBCTemplate.batchUpdate(query,batch);
+		System.out.println("Records inserted successfully");
 	}
 
 }

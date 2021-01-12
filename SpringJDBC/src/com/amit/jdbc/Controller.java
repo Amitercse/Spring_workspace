@@ -87,4 +87,14 @@ public class Controller {
 		user.setLocation(location);
 		simpleJDBInsert.saveUserData(user);
 	}
+	
+	public void batchUpdate(List<User> userList)
+	{
+		dao.batchInsert(userList);
+	}
+	
+	public void batchUpdateUsingNamedParams(List<User> userList)
+	{
+		userDaoNamedJDBC.saveUserInBatch(userList);
+	}
 }

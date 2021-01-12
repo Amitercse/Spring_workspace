@@ -1,5 +1,6 @@
 package com.amit.jdbc;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,14 +15,16 @@ public class Client {
 		controller= context.getBean(Controller.class);
 	//	saveUserData();
 	//	updateUserData();
-		getUserById();
-		getUserList();
-		getUserName();
-		groupUsersByLoc();
+	//	getUserById();
+	//	getUserList();
+	//	getUserName();
+	//	groupUsersByLoc();
 	//	deleteUserById();
 	//	saveUserDataWithNamedParams();
 	//	saveUserDataWithNamedBeanParams();
 	//	saveUserWithSimpleJDBCInsert();
+	//	saveUsersInBatch();
+	//	saveUsersInBatchUsingNamedParams();
 	}
 	
 	private static void saveUserData()
@@ -81,5 +84,29 @@ public class Client {
 	private static void saveUserWithSimpleJDBCInsert()
 	{
 		controller.saveUserWithSimpleJDBCInsert(7, "User 7", "03/03/1993", "Hyderabad");
+	}
+	
+	private static void saveUsersInBatch()
+	{
+		User user1= new User(8, "User 8", "01/02/1992", "Bangalore");
+		User user2= new User(9, "User 9", "01/02/1993", "Hyderabad");
+		User user3= new User(10, "User 10", "01/02/1991", "Chennai");
+		List<User> userList= new ArrayList<>();
+		userList.add(user1);
+		userList.add(user2);
+		userList.add(user3);
+		controller.batchUpdate(userList);
+	}
+	
+	private static void saveUsersInBatchUsingNamedParams()
+	{
+		User user1= new User(11, "User 11", "01/02/1991", "Bangalore");
+		User user2= new User(12, "User 12", "01/02/1992", "Hyderabad");
+		User user3= new User(13, "User 13", "01/02/1993", "Chennai");
+		List<User> userList= new ArrayList<>();
+		userList.add(user1);
+		userList.add(user2);
+		userList.add(user3);
+		controller.batchUpdateUsingNamedParams(userList);
 	}
 }
