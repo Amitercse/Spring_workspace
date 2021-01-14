@@ -24,7 +24,7 @@ public class Client {
 	//	saveUserDataWithNamedBeanParams();
 	//	saveUserWithSimpleJDBCInsert();
 	//	saveUsersInBatch();
-	//	saveUsersInBatchUsingNamedParams();
+		saveUsersInBatchUsingNamedParams();
 	}
 	
 	private static void saveUserData()
