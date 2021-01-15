@@ -1,5 +1,7 @@
 package com.amit.hibernate;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +12,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 	EmployeeDao employeeDao;
 	
 	@Override
-	public void saveEmployee(Employee emp) {
-		employeeDao.saveEmployee(emp);
+	public void saveEmployee(Employee employee) {
+		employeeDao.saveEmployee(employee);
+	}
+
+	@Override
+	public void updateEmployee(Employee employee) {
+		employeeDao.updateEmployee(employee);
+	}
+
+	@Override
+	public List<Employee> getEmployeeList() {
+		return employeeDao.getEmployeeList();
+	}
+
+	@Override
+	public Employee getEmployeeById(int employeeId) {
+		return employeeDao.getEmployeeById(employeeId);
 	}
 
 }

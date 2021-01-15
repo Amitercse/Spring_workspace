@@ -13,6 +13,6 @@ public class HIbernateUtil {
 	
 	public Session getSession()
 	{
-		return sessionFactory.getObject().openSession();
+		return sessionFactory.getObject().getCurrentSession();
 	}
 }
