@@ -13,17 +13,17 @@ public class Client {
 	public static void main(String[] args) {
 		ApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
 		controller= context.getBean(Controller.class);
-	//	saveUserData();
-	//	updateUserData();
-	//	getUserById();
-	//	getUserList();
-	//	getUserName();
-	//	groupUsersByLoc();
-	//	deleteUserById();
-	//	saveUserDataWithNamedParams();
-	//	saveUserDataWithNamedBeanParams();
-	//	saveUserWithSimpleJDBCInsert();
-	//	saveUsersInBatch();
+		saveUserData();
+		updateUserData();
+		getUserById();
+		getUserList();
+		getUserName();
+		groupUsersByLoc();
+		deleteUserById();
+		saveUserDataWithNamedParams();
+		saveUserDataWithNamedBeanParams();
+		saveUserWithSimpleJDBCInsert();
+		saveUsersInBatch();
 		saveUsersInBatchUsingNamedParams();
 	}
 	
