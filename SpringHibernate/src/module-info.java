@@ -9,6 +9,8 @@ module SpringHibernate {
 	requires org.hibernate.orm.core;
 	requires spring.core;
 	requires java.sql;
+	requires java.transaction;
+	requires spring.tx;
 	exports com.amit.hibernate;
 	opens com.amit.hibernate;
 }

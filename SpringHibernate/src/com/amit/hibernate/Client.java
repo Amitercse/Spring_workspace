@@ -11,7 +11,7 @@ public class Client {
 	public static void main(String[] args) {
 		ApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
 		controller= context.getBean(Controller.class);
-		saveEmployee();
+	//	saveEmployee();
 	//	updateEmployee();
 	//	getEmployeeList();
 	//	getEmployeeById();
@@ -19,11 +19,11 @@ public class Client {
 	}
 	
 	private static void saveEmployee() {
-		controller.saveEmployee("Employee 2", "development", "Bangalore");
+		controller.saveEmployee("Employee 2", "Development", "Hyderabad");
 	}
 	
 	private static void updateEmployee() {
-		controller.updateEmployee(2, "Employee 2", "development", "Hyderabad");
+		controller.updateEmployee(5, "Employee 2", "HR", "Chennai");
 	}
 	
 	private static void getEmployeeList()
@@ -40,6 +40,6 @@ public class Client {
 	
 	private static void deleteEmployee()
 	{
-		controller.deleteEmployee(2);
+		controller.deleteEmployee(5);
 	}
 }
