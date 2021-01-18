@@ -40,4 +40,9 @@ public class Controller {
 	{
 		return empService.getEmployeeById(employeeId);
 	}
+	
+	public void deleteEmployee(int employeeId)
+	{
+		empService.deleteEmployee(employeeId);
+	}
 }

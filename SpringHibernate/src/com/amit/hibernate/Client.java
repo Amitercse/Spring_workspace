@@ -11,10 +11,11 @@ public class Client {
 	public static void main(String[] args) {
 		ApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
 		controller= context.getBean(Controller.class);
-	//	saveEmployee();
-		updateEmployee();
-		getEmployeeList();
-		getEmployeeById();
+		saveEmployee();
+	//	updateEmployee();
+	//	getEmployeeList();
+	//	getEmployeeById();
+	//	deleteEmployee();
 	}
 	
 	private static void saveEmployee() {
@@ -35,5 +36,10 @@ public class Client {
 	{
 		Employee employee= controller.getEmployeeById(1);
 		System.out.println(employee);
+	}
+	
+	private static void deleteEmployee()
+	{
+		controller.deleteEmployee(2);
 	}
 }
