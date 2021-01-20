@@ -16,4 +16,6 @@ public interface EmployeeDao {
 	public List<Employee> getEmployeeList();
 	
 	public void deleteEmployee(int employeeId);
+	
+	public void firstLevelCache(int employeeId);
 }

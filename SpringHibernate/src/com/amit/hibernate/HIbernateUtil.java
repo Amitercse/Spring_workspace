@@ -15,4 +15,9 @@ public class HIbernateUtil {
 	{
 		return sessionFactory.getObject().getCurrentSession();
 	}
+	
+	public Session openSession()
+	{
+		return sessionFactory.getObject().openSession();
+	}
 }

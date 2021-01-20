@@ -45,4 +45,9 @@ public class Controller {
 	{
 		empService.deleteEmployee(employeeId);
 	}
+	
+	public void firstLevelCache(int employeeId)
+	{
+		empService.firstLevelCache(employeeId);
+	}
 }

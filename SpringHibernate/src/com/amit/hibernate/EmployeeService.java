@@ -16,4 +16,6 @@ public interface EmployeeService {
 	public Employee getEmployeeById(int employeeId);
 	
 	public void deleteEmployee(int employeeId);
+	
+	public void firstLevelCache(int employeeId); 
 }

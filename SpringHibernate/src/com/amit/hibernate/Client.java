@@ -16,14 +16,15 @@ public class Client {
 	//	getEmployeeList();
 	//	getEmployeeById();
 	//	deleteEmployee();
+		firstLevelCacheExample();
 	}
-	
+
 	private static void saveEmployee() {
-		controller.saveEmployee("Employee 2", "Development", "Hyderabad");
+		controller.saveEmployee("Employee 2", "Development", "Bangalore");
 	}
 	
 	private static void updateEmployee() {
-		controller.updateEmployee(5, "Employee 2", "HR", "Chennai");
+		controller.updateEmployee(6, "Employee 2", "HR", "Chennai");
 	}
 	
 	private static void getEmployeeList()
@@ -40,6 +41,10 @@ public class Client {
 	
 	private static void deleteEmployee()
 	{
-		controller.deleteEmployee(5);
+		controller.deleteEmployee(6);
+	}
+	
+	private static void firstLevelCacheExample() {
+		controller.firstLevelCache(1);
 	}
 }

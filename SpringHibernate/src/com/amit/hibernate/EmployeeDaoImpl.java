@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -50,6 +49,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		employee.setId(employeeId);
 		session.delete(employee);
 		System.out.println("deleted employee with id: " + employeeId);
+	}
+
+	@Override
+	public void firstLevelCache(int employeeId) {
+		Session session = hibernateUtil.getSession();
+		Employee employee = session.get(Employee.class, employeeId);
+		System.out.println("employee details using first session: "+employee);
+		Session tempSession = hibernateUtil.openSession();
+		System.out.println("is same session: "+ (session==tempSession));
+		employee= tempSession.get(Employee.class, employeeId);
+		System.out.println("employee details using second session: "+employee);
 	}
 
 }

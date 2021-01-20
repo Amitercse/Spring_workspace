@@ -43,4 +43,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.deleteEmployee(employeeId);
 	}
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	@Override
+	public void firstLevelCache(int employeeId) {
+		employeeDao.firstLevelCache(employeeId);
+	}
+
 }
