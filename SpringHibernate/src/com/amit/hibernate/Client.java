@@ -16,7 +16,8 @@ public class Client {
 	//	getEmployeeList();
 	//	getEmployeeById();
 	//	deleteEmployee();
-		firstLevelCacheExample();
+	//	firstLevelCacheExample();
+		secondLevelCacheExample();
 	}
 
 	private static void saveEmployee() {
@@ -46,5 +47,9 @@ public class Client {
 	
 	private static void firstLevelCacheExample() {
 		controller.firstLevelCache(1);
+	}
+	
+	private static void secondLevelCacheExample() {
+		controller.secondLevelCache(1);
 	}
 }

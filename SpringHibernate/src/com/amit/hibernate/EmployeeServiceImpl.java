@@ -49,4 +49,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.firstLevelCache(employeeId);
 	}
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	@Override
+	public void secondLevelCache(int employeeId) {
+		employeeDao.secondLevelCache(employeeId);
+	}
+
 }

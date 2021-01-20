@@ -18,4 +18,6 @@ public interface EmployeeDao {
 	public void deleteEmployee(int employeeId);
 	
 	public void firstLevelCache(int employeeId);
+	
+	public void secondLevelCache(int employeeId);
 }

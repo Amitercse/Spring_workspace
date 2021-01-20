@@ -50,4 +50,9 @@ public class Controller {
 	{
 		empService.firstLevelCache(employeeId);
 	}
+	
+	public void secondLevelCache(int employeeId)
+	{
+		empService.secondLevelCache(employeeId);
+	}
 }

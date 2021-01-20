@@ -18,4 +18,6 @@ public interface EmployeeService {
 	public void deleteEmployee(int employeeId);
 	
 	public void firstLevelCache(int employeeId); 
+	
+	public void secondLevelCache(int employeeId); 
 }

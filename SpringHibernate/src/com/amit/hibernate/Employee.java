@@ -6,10 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.stereotype.Component;
 
 @Entity
 @Component
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Employee {
 
 	@Column(name="emp_id")

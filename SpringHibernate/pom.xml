@@ -57,6 +57,11 @@
         <artifactId>hibernate-core</artifactId>
         <version>${hibernate.version}</version>
      </dependency>
+     <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-ehcache</artifactId>
+    	<version>${hibernate.version}</version>
+	 </dependency>
      <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 	<dependency>
     	<groupId>commons-dbcp</groupId>

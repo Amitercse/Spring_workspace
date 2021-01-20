@@ -56,6 +56,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		Session session = hibernateUtil.getSession();
 		Employee employee = session.get(Employee.class, employeeId);
 		System.out.println("employee details using first session: "+employee);
+		Session tempSession = hibernateUtil.getSession();
+		System.out.println("is same session: "+ (session==tempSession));
+		employee= tempSession.get(Employee.class, employeeId);
+		System.out.println("employee details using second session: "+employee);
+	}
+
+	@Override
+	public void secondLevelCache(int employeeId) {
+		Session session = hibernateUtil.getSession();
+		Employee employee = session.get(Employee.class, employeeId);
+		System.out.println("employee details using first session: "+employee);
 		Session tempSession = hibernateUtil.openSession();
 		System.out.println("is same session: "+ (session==tempSession));
 		employee= tempSession.get(Employee.class, employeeId);
