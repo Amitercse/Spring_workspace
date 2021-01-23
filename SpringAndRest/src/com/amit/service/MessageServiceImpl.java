@@ -90,4 +90,20 @@ public class MessageServiceImpl implements MessageService{
 		}
 	}
 
+	@Override
+	public List<MessageResource> getMessagesByAuthorName(String authorName) {
+		List<MessageResource> messageList = Util.getMessagesList();
+		List<MessageResource> newMessageList = new ArrayList<>();
+		for (MessageResource message : messageList) {
+			if (message.getAuthor().equalsIgnoreCase(authorName)) {
+				newMessageList.add(message);
+			}
+		}
+		if (newMessageList.isEmpty()) {
+			throw new DataNotFoundException("Not able to find message with author name: " + authorName);
+		}
+		linkBuilder.addLinksToMessages(newMessageList);
+		return newMessageList;
+	}
+
 }

@@ -18,4 +18,6 @@ public interface MessageService {
 	public void updateMessage(int messageId, MessageResource messageResource);
 	
 	public void deleteMessage(int messageId);
+	
+	public List<MessageResource> getMessagesByAuthorName(String authorName);
 }

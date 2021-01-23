@@ -2,13 +2,19 @@ package com.amit.model;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 import org.springframework.hateoas.RepresentationModel;
 
+@XmlRootElement(name="message")
+@XmlType(propOrder = { "id", "author", "message", "postedDate", "commentsList"})
 public class MessageResource extends RepresentationModel<MessageResource> {
 
 	private int id;
-	private String message;
 	private String author;
+	private String message;
 	private String postedDate;
 	List<CommentResource> commentsList;
 	
@@ -26,7 +32,7 @@ public class MessageResource extends RepresentationModel<MessageResource> {
 	 * @param postedDate
 	 * @param commentsList
 	 */
-	public MessageResource(int id, String message, String author, String postedDate,
+	public MessageResource(int id, String author, String message, String postedDate,
 			List<CommentResource> commentsList) {
 		super();
 		this.id = id;
@@ -88,6 +94,7 @@ public class MessageResource extends RepresentationModel<MessageResource> {
 	/**
 	 * @return the commentsList
 	 */
+	@XmlElement(name="comment")
 	public List<CommentResource> getCommentsList() {
 		return commentsList;
 	}

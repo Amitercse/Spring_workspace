@@ -15,7 +15,7 @@ import com.amit.util.Util;
  * @author Amit sharma
  *
  */
-@RequestMapping("dummy")
+@RequestMapping("/dummy")
 @Controller
 public class DummyController {
 

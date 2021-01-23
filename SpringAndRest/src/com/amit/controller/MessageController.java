@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amit.model.MessageResource;
@@ -36,10 +37,15 @@ public class MessageController {
 		return messageService.getMessages();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping(value="/{id}", produces={"application/json","application/xml"})
 	public ResponseEntity<MessageResource> getMessageById(@PathVariable("id") int messageId) {
 		MessageResource message= messageService.getMessagesById(messageId);
 		return new ResponseEntity<>(message, HttpStatus.OK);
+	}
+	
+	@GetMapping("/author")
+	public List<MessageResource> getMessagesByAuthor(@RequestParam("author") String authorName) {
+		return messageService.getMessagesByAuthorName(authorName);
 	}
 
 	@PostMapping
