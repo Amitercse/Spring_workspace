@@ -2,7 +2,9 @@ package com.amit.model;
 
 import java.util.List;
 
-public class MessageResource {
+import org.springframework.hateoas.RepresentationModel;
+
+public class MessageResource extends RepresentationModel<MessageResource> {
 
 	private int id;
 	private String message;

@@ -1,6 +1,8 @@
 package com.amit.model;
 
-public class CommentResource {
+import org.springframework.hateoas.RepresentationModel;
+
+public class CommentResource extends RepresentationModel<CommentResource> {
 
 	private int id;
 	private String authorName;

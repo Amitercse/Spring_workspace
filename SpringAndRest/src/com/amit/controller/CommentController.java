@@ -40,29 +40,32 @@ public class CommentController {
 	}
 
 	@PostMapping
-	public ResponseEntity<ResponseMessage> postComment(@PathVariable("messageId") int messageId,
+	public String postComment(@PathVariable("messageId") int messageId,
 			@RequestBody CommentResource commentResource) {
 		commentService.postComment(messageId, commentResource);
-		responseMessage.setMessageCode(800);
+		return "Comment posted successfully";
+	/*	responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Comment posted successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
+		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);  */
 	}
 
 	@PutMapping("/{commentId}")
-	public ResponseEntity<ResponseMessage> updateComment(@PathVariable("messageId") int messageId,
+	public String updateComment(@PathVariable("messageId") int messageId,
 			@PathVariable("commentId") int commentId, @RequestBody CommentResource commentResource) {
 		commentService.updateComment(messageId, commentId, commentResource);
-		responseMessage.setMessageCode(800);
+		return "Comment updated successfully";
+	/*	responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Comment updated successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+		return new ResponseEntity<>(responseMessage, HttpStatus.OK);  */
 	}
 
 	@DeleteMapping("/{commentId}")
-	public ResponseEntity<ResponseMessage> deleteComment(@PathVariable("messageId") int messageId,
+	public String deleteComment(@PathVariable("messageId") int messageId,
 			@PathVariable("commentId") int commentId) {
 		commentService.deleteComment(messageId, commentId);
-		responseMessage.setMessageCode(800);
+		return "Comment deleted successfully";
+	/*	responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Comment deleted successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+		return new ResponseEntity<>(responseMessage, HttpStatus.OK);   */
 	}
 }

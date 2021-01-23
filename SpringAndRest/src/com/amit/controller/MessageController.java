@@ -3,6 +3,8 @@ package com.amit.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +20,7 @@ import com.amit.model.MessageResource;
 import com.amit.service.MessageService;
 import com.amit.util.ResponseMessage;
 
-@RequestMapping("messages")
+@RequestMapping("/messages")
 @RestController
 public class MessageController {
 
@@ -41,27 +43,30 @@ public class MessageController {
 	}
 
 	@PostMapping
-	public ResponseEntity<ResponseMessage> postMessage(@RequestBody MessageResource messageResource) {
+	public String postMessage(@RequestBody MessageResource messageResource) {
 		messageService.saveMessage(messageResource);
-		responseMessage.setMessageCode(800);
+		return "Message saved successfully";
+	/*	responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message saved successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
+		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);  */
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<ResponseMessage> updateMessage(@RequestBody MessageResource messageResource,
+	public String updateMessage(@RequestBody MessageResource messageResource,
 			@PathVariable("id") int messageId) {
 		messageService.updateMessage(messageId, messageResource);
-		responseMessage.setMessageCode(800);
+		return "Message updated successfully";
+	/*	responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message updated successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+		return new ResponseEntity<>(responseMessage, HttpStatus.OK);  */
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<ResponseMessage> deleteMessage(@PathVariable("id") int messageId) {
+	public String deleteMessage(@PathVariable("id") int messageId) {
 		messageService.deleteMessage(messageId);
-		responseMessage.setMessageCode(800);
+		return "Message deleted successfully";
+	/*	responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message deleted successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+		return new ResponseEntity<>(responseMessage, HttpStatus.OK);  */
 	}
 }
