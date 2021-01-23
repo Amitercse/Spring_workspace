@@ -1,7 +1,5 @@
 package com.amit.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.springframework.hateoas.RepresentationModel;
 
 public class CommentResource extends RepresentationModel<CommentResource> {

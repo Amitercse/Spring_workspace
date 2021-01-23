@@ -8,7 +8,6 @@ import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Component;
 
 import com.amit.controller.CommentController;
-import com.amit.controller.MessageController;
 import com.amit.exception.DataNotFoundException;
 import com.amit.model.CommentResource;
 import com.amit.model.MessageResource;
