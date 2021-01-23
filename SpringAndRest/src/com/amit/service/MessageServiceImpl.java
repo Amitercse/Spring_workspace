@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.amit.exception.DataNotFoundException;
 import com.amit.model.MessageResource;
 import com.amit.util.Util;
 
@@ -13,7 +14,12 @@ public class MessageServiceImpl implements MessageService{
 	
 	@Override
 	public List<MessageResource> getMessages() {
-		return Util.getMessagesList();
+		List<MessageResource> messageList= Util.getMessagesList();
+		if(messageList== null)
+		{
+			throw new DataNotFoundException("No message found");
+		}
+		return messageList;
 	}
 	
 	@Override
@@ -26,6 +32,10 @@ public class MessageServiceImpl implements MessageService{
 			{
 				newMessage= message;
 			}
+		}
+		if(newMessage== null)
+		{
+			throw new DataNotFoundException("Not able to find message with id: "+ messageId);
 		}
 		return newMessage;
 	}

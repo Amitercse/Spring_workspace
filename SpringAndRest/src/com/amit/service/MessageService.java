@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.amit.exception.DataNotFoundException;
 import com.amit.model.MessageResource;
 
 @Service

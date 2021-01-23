@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.amit.exception.DataNotFoundException;
 import com.amit.model.CommentResource;
 import com.amit.model.MessageResource;
 import com.amit.util.Util;
@@ -13,15 +14,16 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<CommentResource> getComments(int messageId) {
-		List<MessageResource> messagesList= Util.getMessagesList();
-		MessageResource messageResource= null;
-		for(MessageResource message: messagesList)
-		{
-			if(message.getId()== messageId)
-			{
-				messageResource= message;
+		List<MessageResource> messagesList = Util.getMessagesList();
+		MessageResource messageResource = null;
+		for (MessageResource message : messagesList) {
+			if (message.getId() == messageId) {
+				messageResource = message;
 				break;
 			}
+		}
+		if (messageResource == null) {
+			throw new DataNotFoundException("No meesage found with id: " + messageId);
 		}
 		return messageResource.getCommentsList();
 	}
@@ -36,12 +38,18 @@ public class CommentServiceImpl implements CommentService {
 				break;
 			}
 		}
+		if (messageResource == null) {
+			throw new DataNotFoundException("No message found with id: " + messageId);
+		}
 		CommentResource commentResource = null;
 		for (CommentResource comment : messageResource.getCommentsList()) {
 			if (comment.getId() == commentId) {
 				commentResource = comment;
 				break;
 			}
+		}
+		if (commentResource == null) {
+			throw new DataNotFoundException("No comment found with id: " + commentId);
 		}
 		return commentResource;
 	}
@@ -56,6 +64,9 @@ public class CommentServiceImpl implements CommentService {
 				break;
 			}
 		}
+		if (messageResource == null) {
+			throw new DataNotFoundException("No message found with id: " + messageId);
+		}
 		messageResource.getCommentsList().add(comment);
 	}
 
@@ -68,6 +79,10 @@ public class CommentServiceImpl implements CommentService {
 				messageResource = message;
 				break;
 			}
+		}
+		if(messageResource== null)
+		{
+			throw new DataNotFoundException("No message found with id: "+ messageId);
 		}
 		for (CommentResource commentResource : messageResource.getCommentsList()) {
 			if (commentResource.getId() == commentId) {
@@ -88,6 +103,10 @@ public class CommentServiceImpl implements CommentService {
 				messageResource = message;
 				break;
 			}
+		}
+		if(messageResource == null)
+		{
+			throw new DataNotFoundException("No message found with id: "+ messageId);
 		}
 		for (CommentResource commentResource : messageResource.getCommentsList()) {
 			if (commentResource.getId() == commentId) {
