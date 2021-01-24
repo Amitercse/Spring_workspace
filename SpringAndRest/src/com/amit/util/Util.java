@@ -17,7 +17,7 @@ public class Util {
 	
 	static
 	{
-		messagesList= new ArrayList<MessageResource>();
+		messagesList= new ArrayList<>();
 		List<CommentResource> commentList= new ArrayList<>();
 		CommentResource comment1= new CommentResource(1, "author 1", "First comment posted by author1", "2021-01-10", 1);
 		CommentResource comment2= new CommentResource(2, "author 2", "Second comment posted by author2", "2021-01-11", 1);
