@@ -3,12 +3,16 @@ package com.amit.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.amit.model.CommentResource;
 import com.amit.model.MessageResource;
 
 public class Util {
 	
 	private static List<MessageResource> messagesList;
+	
+	private static final Logger logger = Logger.getLogger(Util.class.getName());
 	
 	private Util()
 	{
@@ -33,6 +37,7 @@ public class Util {
 		commentList.add(comment4);
 		MessageResource message2= new MessageResource(2, "author 2", "Second message posted by author 2", "2021-01-05", commentList);
 		messagesList.add(message2);
+		logger.info("Loaded messages in memory, total messages: "+ messagesList.size());
 	}
 	
 	public static List<MessageResource> getMessagesList()

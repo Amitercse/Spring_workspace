@@ -2,6 +2,7 @@ package com.amit.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -24,7 +25,7 @@ import com.amit.util.ResponseMessage;
 @RequestMapping("/messages")
 @RestController
 public class MessageController {
-
+	
 	@Autowired
 	private MessageService messageService;
 
