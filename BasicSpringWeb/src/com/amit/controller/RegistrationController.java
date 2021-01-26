@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amit.model.Employee;
 import com.amit.service.EmployeeService;
+import com.amit.validator.EmployeeValidator;
 
 @Controller
 public class RegistrationController {
@@ -20,6 +22,9 @@ public class RegistrationController {
 	
 	@Autowired
 	private Employee employee;
+	
+	@Autowired
+	private EmployeeValidator validator;
 
 	@RequestMapping("/registerEmployee.view")
 	public String registrationView(Model model)
@@ -32,9 +37,16 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/register.view")
-	public String registerEmployee(@ModelAttribute("emp") Employee employee, @RequestParam("dummyParam") String dummyParam)
-	{
-		System.out.println("Dummy param value: "+ dummyParam);
+	public String registerEmployee(@ModelAttribute("emp") Employee employee, BindingResult bindingResult,
+			@RequestParam("dummyParam") String dummyParam, Model model) {
+		validator.validate(employee, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.err.println("Validation errors");
+			List<String> deptList= employeeService.getDepartmentList();
+			model.addAttribute("deptList", deptList);
+			return "employeeRegistration";
+		}
+		System.out.println("Dummy param value: " + dummyParam);
 		employeeService.saveEmployeeData(employee);
 		return "registrationSuccess";
 	}

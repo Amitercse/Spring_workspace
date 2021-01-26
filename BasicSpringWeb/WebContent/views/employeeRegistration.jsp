@@ -17,23 +17,38 @@
                 </tr>
                 <tr>
                     <td><spring:message code="label.user.username" /></td>
-                    <td><form:input path="userName" /></td>
+                    <td>
+                    <form:input path="userName" />
+                    <form:errors path="userName" cssStyle="color : red;"></form:errors>
+                    </td>
                 </tr>
             	<tr>
                     <td><spring:message code="label.user.name" /></td>
-                    <td><form:input path="name" /></td>
+                    <td>
+                    <form:input path="name" />
+                    <form:errors path="name" cssStyle="color : red;"></form:errors>
+                    </td>
                 </tr>
                 <tr>
                     <td><spring:message code="label.user.password" /></td>
-                    <td><form:password path="password" /></td>
+                    <td>
+                    <form:password path="password" />
+                    <form:errors path="password" cssStyle="color : red;"></form:errors>
+                    </td>
                 </tr>
                 <tr>
                     <td><spring:message code="label.user.email" /></td>
-                    <td><form:input path="email" /></td>
+                    <td>
+                    <form:input path="email" />
+                    <form:errors path="email" cssStyle="color : red;"></form:errors>
+                    </td>
                 </tr>
                 <tr>
                     <td><spring:message code="label.user.dateOfBirth" /></td>
-                    <td><form:input path="dateOfBirth" /></td>
+                    <td>
+                    <form:input path="dateOfBirth" />
+                    <form:errors path="dateOfBirth" cssStyle="color : red;"></form:errors>
+                    </td>
                 </tr>
                 <tr>
                     <td><spring:message code="label.user.department" /></td>
