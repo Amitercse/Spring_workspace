@@ -39,9 +39,9 @@ public class MessageController {
 	}
 
 	@GetMapping(value="/{id}", produces={"application/json","application/xml"})
-	public ResponseEntity<MessageResource> getMessageById(@PathVariable("id") int messageId) {
+	public MessageResource getMessageById(@PathVariable("id") int messageId) {
 		MessageResource message= messageService.getMessagesById(messageId);
-		return new ResponseEntity<>(message, HttpStatus.OK);
+		return message;
 	}
 	
 	@GetMapping("/author")
