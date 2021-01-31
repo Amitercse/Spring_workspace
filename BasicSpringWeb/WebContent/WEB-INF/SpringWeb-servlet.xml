@@ -12,7 +12,7 @@
     
     <context:annotation-config />
 	<context:component-scan base-package="com.amit" />
-	<mvc:annotation-driven />
+	<mvc:annotation-driven validator="validator" />
 	
 	<!-- view resolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,4 +23,9 @@
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:i18n/messages" />
   	</bean>
+  	
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
+		<property name="validationMessageSource" ref="messageSource"/>
+	</bean>
+  	
 </beans>

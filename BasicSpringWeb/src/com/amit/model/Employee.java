@@ -2,31 +2,44 @@ package com.amit.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
+import com.amit.validator.DateConstraint;
+import com.amit.validator.EmployeeConstraint;
+
 @Component
+@EmployeeConstraint(message="{employeeBean.password.invalid}")
 public class Employee {
 
-	@NotNull(message = "${employeeBean.userName.empty}")
-	@NotBlank(message = "${employeeBean.userName.empty}")
+	@NotNull(message = "{employeeBean.userName.empty}")
+	@NotBlank(message = "{employeeBean.userName.empty}")
 	@Size(min=2, max=15, message = "{employeeBean.userName.length}")
 	private String userName;
+	
 	@NotNull(message= "{employeeBean.name.empty}")
 	@NotBlank(message = "{employeeBean.name.empty}")
 	@Size(min=2, max=20, message= "{employeeBean.name.length}")
 	private String name;
+	
 	@NotNull(message = "{employeeBean.password.empty}")
 	@NotBlank(message = "{employeeBean.password.empty}")
 	private String password;
+	
+	@NotNull(message= "{employeeBean.dateOfBirth.empty}")
+	@NotEmpty(message = "{employeeBean.dateOfBirth.empty}")
+	@DateConstraint(message = "{employeeBean.dateOfBirth.format}", dateFormat = "mm/dd/yyyy")
 	private String dateOfBirth;
+	
 	@NotNull(message= "{employeeBean.email.empty}")
 	@NotBlank(message = "{employeeBean.email.empty}")
 //	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Enter a valid email")
 	@Email(message= "{employeeBean.email.format}")
+	
 	private String email;
 	private String department;
 	

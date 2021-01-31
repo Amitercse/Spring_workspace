@@ -38,11 +38,14 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/register.view")
-	public String registerEmployee(@ModelAttribute("emp") @Validated Employee employee, BindingResult bindingResult,
+	public String registerEmployee(@ModelAttribute("emp") Employee employee, BindingResult bindingResult,
 			@RequestParam("dummyParam") String dummyParam, Model model) {
-	//	validator.validate(employee, bindingResult);
+		validator.validate(employee, bindingResult);
+		if(bindingResult.hasGlobalErrors())
+		{
+			bindingResult.rejectValue("password", null, bindingResult.getGlobalErrors().get(0).getDefaultMessage());
+		}
 		if (bindingResult.hasErrors()) {
-			System.err.println("Validation errors");
 			List<String> deptList= employeeService.getDepartmentList();
 			model.addAttribute("deptList", deptList);
 			return "employeeRegistration";
