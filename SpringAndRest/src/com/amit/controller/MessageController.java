@@ -50,30 +50,27 @@ public class MessageController {
 	}
 
 	@PostMapping
-	public String postMessage(@RequestBody MessageResource messageResource) {
+	public ResponseEntity<ResponseMessage> postMessage(@RequestBody MessageResource messageResource) {
 		messageService.saveMessage(messageResource);
-		return "Message saved successfully";
-	/*	responseMessage.setMessageCode(800);
+		responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message saved successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);  */
+		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id}")
-	public String updateMessage(@RequestBody MessageResource messageResource,
+	public ResponseEntity<ResponseMessage> updateMessage(@RequestBody MessageResource messageResource,
 			@PathVariable("id") int messageId) {
 		messageService.updateMessage(messageId, messageResource);
-		return "Message updated successfully";
-	/*	responseMessage.setMessageCode(800);
+		responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message updated successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.OK);  */
+		return new ResponseEntity<>(responseMessage, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
-	public String deleteMessage(@PathVariable("id") int messageId) {
+	public ResponseEntity<ResponseMessage> deleteMessage(@PathVariable("id") int messageId) {
 		messageService.deleteMessage(messageId);
-		return "Message deleted successfully";
-	/*	responseMessage.setMessageCode(800);
+		responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message deleted successfully");
-		return new ResponseEntity<>(responseMessage, HttpStatus.OK);  */
+		return new ResponseEntity<>(responseMessage, HttpStatus.OK);
 	}
 }
