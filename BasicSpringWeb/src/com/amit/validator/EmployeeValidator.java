@@ -51,7 +51,7 @@ public class EmployeeValidator implements Validator {
 			}
 			int month = Integer.parseInt(splittedDOB[0]);
 			int date = Integer.parseInt(splittedDOB[1]);
-			if (month < 0 || month > 12 || date < 0 || date > 31 || splittedDOB[2].length() != 4) {
+			if (month < 1 || month > 12 || date < 1 || date > 31 || splittedDOB[2].length() != 4) {
 				return false;
 			}
 			return true;
