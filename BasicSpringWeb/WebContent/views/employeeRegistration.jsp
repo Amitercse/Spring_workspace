@@ -13,7 +13,7 @@
 	<a href="logout">Logout</a>
 </div>
     <div align="center">
-        <form:form action="register.view" method="post" modelAttribute="emp">
+        <form:form action="adminRegister.view" method="post" modelAttribute="emp">
             <table border="0">
                 <tr>
                     <td colspan="2" align="center"><h2>Employee - Registration</h2></td>

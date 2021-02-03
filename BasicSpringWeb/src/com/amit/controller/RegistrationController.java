@@ -27,7 +27,7 @@ public class RegistrationController {
 	@Autowired
 	private EmployeeValidator validator;
 
-	@RequestMapping("/registerEmployee.view")
+	@RequestMapping("/adminRegisterEmployee.view")
 	public String registrationView(Model model)
 	{
 		model.addAttribute("emp", employee);
@@ -37,7 +37,7 @@ public class RegistrationController {
 		return "employeeRegistration";
 	}
 	
-	@RequestMapping("/register.view")
+	@RequestMapping("/adminRegister.view")
 	public String registerEmployee(@ModelAttribute("emp") @Validated Employee employee, BindingResult bindingResult,
 			@RequestParam("dummyParam") String dummyParam, Model model) {
 	//	validator.validate(employee, bindingResult);

@@ -17,12 +17,14 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).
-        withUser("user").password(encoder.encode("user")).roles("user");
+        withUser("user").password(encoder.encode("user")).roles("user").and().
+        withUser("admin").password(encoder.encode("admin")).roles("admin");
     }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and()
-				.formLogin().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
+		http.authorizeRequests().antMatchers("/admin*").hasRole("admin").
+		antMatchers("/user*").hasAnyRole("admin", "user").antMatchers("/").permitAll().and().
+		formLogin().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
 	}
 }

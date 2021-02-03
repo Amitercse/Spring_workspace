@@ -16,7 +16,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 	
-	@RequestMapping("/getEmployee.view")
+	@RequestMapping("/userGetEmployee.view")
 	public ModelAndView getEmployeeList()
 	{
 		ModelAndView modelAndView= new ModelAndView();
