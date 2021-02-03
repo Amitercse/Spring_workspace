@@ -9,6 +9,9 @@
 <title>Registration page</title>
 </head>
 <body>
+<div align="right">
+	<a href="logout">Logout</a>
+</div>
     <div align="center">
         <form:form action="register.view" method="post" modelAttribute="emp">
             <table border="0">
@@ -65,6 +68,9 @@
                 </tr>
             </table>
         </form:form>
+    </div>
+    <div align="center">
+    	<a href="index.jsp">Go to home</a>
     </div>
 </body>
 </html>
