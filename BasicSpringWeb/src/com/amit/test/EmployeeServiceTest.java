@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,7 +20,6 @@ import com.amit.service.EmployeeService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringTestConfig.class })
 @ActiveProfiles(profiles = "dev")
-// @PropertySource("classpath:i18n/messages.properties")
 public class EmployeeServiceTest {
 
 	@Autowired
@@ -34,7 +32,7 @@ public class EmployeeServiceTest {
 	private MessageSource messageSource;
 
 	@Test
-	public void testDepartmentListForDev() {
+	public void testDepartmentList() {
 		List<String> departmentList = employeeService.getDepartmentList();
 		System.out.println(departmentList.size());
 		if (environment.getActiveProfiles()[0].equals("dev")) {

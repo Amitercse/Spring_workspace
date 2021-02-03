@@ -4,7 +4,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
@@ -39,7 +38,6 @@ public class Employee {
 	@NotBlank(message = "{employeeBean.email.empty}")
 //	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Enter a valid email")
 	@Email(message= "{employeeBean.email.format}")
-	
 	private String email;
 	private String department;
 	
