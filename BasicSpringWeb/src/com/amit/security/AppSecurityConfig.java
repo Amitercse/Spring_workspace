@@ -15,10 +15,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).
-        withUser("user").password(encoder.encode("user")).roles("user").and().
-        withUser("admin").password(encoder.encode("admin")).roles("admin");
+		loadInMemoryAuth(auth);
     }
 	
 	@Override
@@ -26,5 +23,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/admin*").hasRole("admin").
 		antMatchers("/user*").hasAnyRole("admin", "user").antMatchers("/").permitAll().and().
 		formLogin().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
+	}
+	
+	private void loadInMemoryAuth(AuthenticationManagerBuilder auth) throws Exception
+	{
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).
+        withUser("user").password(encoder.encode("user")).roles("user").and().
+        withUser("admin").password(encoder.encode("admin")).roles("admin");
 	}
 }
