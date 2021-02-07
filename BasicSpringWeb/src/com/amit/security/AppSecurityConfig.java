@@ -23,9 +23,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-	//	loadInMemoryAuth(auth);
+		loadInMemoryAuth(auth);
 	//	loadJDBCAuth(auth);
-		loadHibernateAuth(auth);
+	//	loadHibernateAuth(auth);
     }
 	
 	@Override
@@ -35,18 +35,16 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		formLogin().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
 	}
 	
-	private void loadInMemoryAuth(AuthenticationManagerBuilder auth) throws Exception
-	{
+	private void loadInMemoryAuth(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).
-        withUser("user").password(encoder.encode("user")).authorities("user").and().
-        withUser("admin").password(encoder.encode("admin")).authorities("admin");
+		auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("user")
+				.password(encoder.encode("user")).authorities("user").and().withUser("admin")
+				.password(encoder.encode("admin")).authorities("admin");
 	}
 	
 	private void loadJDBCAuth(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		auth.jdbcAuthentication().dataSource(dataSource).rolePrefix("").
-		passwordEncoder(encoder)
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
 				.usersByUsernameQuery("select user_name, password, enabled from user_details where user_name = ?")
 				.authoritiesByUsernameQuery("select user_name, role from user_details where user_name = ?");
 	}

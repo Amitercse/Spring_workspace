@@ -1,0 +1,1 @@
+create table transaction_report(user_id varchar(20), name varchar(20), transaction_date varchar(20), transaction_amount varchar(20));
