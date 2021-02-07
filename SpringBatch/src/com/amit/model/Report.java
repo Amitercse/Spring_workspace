@@ -1,11 +1,14 @@
 package com.amit.model;
 
+import org.springframework.batch.item.database.JpaItemWriter;
+
 public class Report {
 
 	private String userId;
 	private String name;
 	private String transactionDate;
 	private String transactionAmount;
+
 	/**
 	 * @return the userId
 	 */

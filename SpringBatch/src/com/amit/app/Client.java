@@ -10,16 +10,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Client {
 
 	public static void main(String[] args) {
-		ApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
-	    Job job = (Job) context.getBean("reportJob");
-	    try
-	    {
-	    JobExecution execution = jobLauncher.run(job, new JobParameters());
-        System.out.println("Exit Status : " + execution.getStatus());
-	    }
-	    catch (Exception e) {
-			System.out.println("Error: "+e.getStackTrace());
+		Job job = (Job) context.getBean("reportJob");
+		try {
+			JobExecution execution = jobLauncher.run(job, new JobParameters());
+			System.out.println("Exit Status : " + execution.getStatus());
+			Job dbReaderJob = (Job) context.getBean("dbReaderJob");
+			execution = jobLauncher.run(dbReaderJob, new JobParameters());
+			System.out.println("Exit Status : " + execution.getStatus());
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getStackTrace());
 		}
 	}
 }
