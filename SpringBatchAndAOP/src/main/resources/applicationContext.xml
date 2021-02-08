@@ -131,7 +131,7 @@
             </bean>
         </property>
     </bean>
-    
+   <!-- Hibernate reader and writer for batch processing -->
   <!-- <bean id="itemReader"
 		class="org.springframework.batch.item.database.HibernateCursorItemReader">
 		<property name="sessionFactory" ref="sessionFactory" />
