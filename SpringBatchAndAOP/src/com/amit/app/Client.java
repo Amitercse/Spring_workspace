@@ -1,5 +1,6 @@
 package com.amit.app;
 
+import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -18,6 +19,11 @@ public class Client {
 			System.out.println("Exit Status : " + execution.getStatus());
 			job = (Job) context.getBean("dbReaderJob");
 			execution = jobLauncher.run(job, new JobParameters());
+			if(execution.getStatus()== BatchStatus.FAILED)
+			{
+				System.out.println("Retrying the job");
+				jobLauncher.run(job, new JobParameters());
+			}
 			System.out.println("Exit Status : " + execution.getStatus());
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getStackTrace());
