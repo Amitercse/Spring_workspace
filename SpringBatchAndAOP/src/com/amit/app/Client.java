@@ -16,8 +16,8 @@ public class Client {
 		try {
 			JobExecution execution = jobLauncher.run(job, new JobParameters());
 			System.out.println("Exit Status : " + execution.getStatus());
-			Job dbReaderJob = (Job) context.getBean("dbReaderJob");
-			execution = jobLauncher.run(dbReaderJob, new JobParameters());
+			job = (Job) context.getBean("dbReaderJob");
+			execution = jobLauncher.run(job, new JobParameters());
 			System.out.println("Exit Status : " + execution.getStatus());
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getStackTrace());

@@ -7,6 +7,8 @@ module SpringBatch {
 	requires java.sql;
 	requires spring.batch.core;
 	requires spring.batch.infrastructure;
+	requires javax.batch.api;
+	requires spring.retry;
 	exports com.amit.model;
 	exports com.amit.service;
 }
