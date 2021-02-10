@@ -13,13 +13,17 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.amit.aop.AOPService;
+import com.amit.aop.MockAOPService;
+
 public class Client {
 
-	public static void main(String[] args) throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
 	//	runFirstJob(jobLauncher, context);
-		runSecondJob(jobLauncher, context);
+	//	runSecondJob(jobLauncher, context);
+		aopVerification(context);
 	}
 	
 	private static void runFirstJob(JobLauncher jobLauncher, ApplicationContext context) throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException
@@ -40,5 +44,20 @@ public class Client {
 			jobLauncher.run(job2, params);
 		}
 		System.out.println("Exit Status : " + execution2.getStatus());
+	}
+	
+	private static void aopVerification(ApplicationContext context) {
+		AOPService service = context.getBean(AOPService.class);
+		MockAOPService mockService = context.getBean(MockAOPService.class);
+		service.getDummyData();
+		service.saveData("123", "User 1");
+		try {
+			service.checkCompletionOrException();
+		} catch (Exception e) {
+			System.out.println("Custom error");
+		}
+		service.checkAroundAdvice();
+		System.out.println("\n================== Executing mock service =====================");
+		mockService.getMockData();
 	}
 }

@@ -9,7 +9,11 @@ module SpringBatch {
 	requires spring.batch.infrastructure;
 	requires javax.batch.api;
 	requires spring.retry;
+	requires aspectjrt;
+	requires spring.aop;
 	exports com.amit.model;
 	exports com.amit.service;
+	exports com.amit.aop;
 	opens com.amit.service;
+	opens com.amit.aop;
 }
