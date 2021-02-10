@@ -11,4 +11,5 @@ module SpringBatch {
 	requires spring.retry;
 	exports com.amit.model;
 	exports com.amit.service;
+	opens com.amit.service;
 }

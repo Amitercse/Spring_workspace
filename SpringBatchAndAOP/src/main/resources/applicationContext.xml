@@ -93,7 +93,7 @@
   	
   	<bean id= "recordProcessor" class="com.amit.service.RecordProcessor" />
   	
-  	<bean id="newRecordProcessor" class= "com.amit.service.NewRecordProcessor" />
+  	<bean id="newRecordProcessor" class= "com.amit.service.NewRecordProcessor" scope="step" />
   <!-- In memory job repository -->
  <!--  	<bean id = "jobRepository" class = "org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean ">
    		<property name = "transactionManager" ref = "transactionManager"/>
@@ -115,7 +115,7 @@
     	<!-- Step 3 is replica of step 2 only processor is different -->
     	<batch:step id="step3" parent="step2">
       	<batch:tasklet>
-        	<batch:chunk processor="newRecordProcessor">
+        	<batch:chunk processor="newRecordProcessor" writer="newTextFileWriter">
         	</batch:chunk>
       	</batch:tasklet>
     	</batch:step>
@@ -131,6 +131,20 @@
     
     <bean id="textFileWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
 		<property name="resource" value="file:exportReport.txt" />
+		<property name="lineAggregator">
+            <bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+            	<property name="delimiter" value=";" />
+            	<property name="fieldExtractor">
+                    <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+                        <property name="names" value="userId, name, transactionDate, transactionAmount" />
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="newTextFileWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<property name="resource" value="file:newExportReport.txt" />
 		<property name="lineAggregator">
             <bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
             	<property name="delimiter" value=";" />
