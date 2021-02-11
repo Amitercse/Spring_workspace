@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home JSP</title>
+<title>Registration success</title>
 </head>
 <body>
-<a href="adminRegisterUser.view">Go to user registration</a><br>
-<a href="userDisplay.view">Display user records</a>
+<h4>User data saved successfully</h4>
+<a href="/MyApp">Go to home</a>
 </body>
 </html>
