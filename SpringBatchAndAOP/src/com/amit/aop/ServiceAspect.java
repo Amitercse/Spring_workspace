@@ -29,30 +29,30 @@ public class ServiceAspect {
 	@Before("execution(* com.amit.aop.*.save*(..))")
 	public void openTransaction(JoinPoint joinPoint)
 	{
-		// Code to open the transaction before savign data
+		// Code to open the transaction before saving data
 		System.out.println("Opening transaction to save data for method: "+ joinPoint.getSignature());
 	}
 	
 	@AfterThrowing("execution(* com.amit.aop.AOPService.checkCompletionOrException())")
-	public void checkException(JoinPoint jointPoint) {
-		System.out.println("Checking the exception thrown by method: "+ jointPoint.getSignature());
+	public void checkException(JoinPoint joinPoint) {
+		System.out.println("Checking the exception thrown by method: "+ joinPoint.getSignature());
 	}
 	
 	@AfterReturning("execution(* com.amit.aop.AOPService.checkCompletionOrException())")
-	public void afterCompletion(JoinPoint jointPoint) {
-		System.out.println("Checking the successful completion of method: "+ jointPoint.getSignature());
+	public void afterCompletion(JoinPoint joinPoint) {
+		System.out.println("Checking the successful completion of method: "+ joinPoint.getSignature());
 	}
 	
 	@Around("execution(* com.amit.aop.AOPService.checkAroundAdvice(..))")
-	public void checkAroundAdvice(ProceedingJoinPoint jointPoint)
+	public void checkAroundAdvice(ProceedingJoinPoint joinPoint)
 	{
-		System.out.println("Checking around advice before execution for method: "+jointPoint.getSignature());
+		System.out.println("Checking around advice before execution for method: "+joinPoint.getSignature());
 		try {
-			jointPoint.proceed();
+			joinPoint.proceed();
 		} catch (Throwable e) {
 			e.printStackTrace();
-		}
-		System.out.println("Checking around advice after execution for method: "+jointPoint.getSignature());
+		} 
+		System.out.println("Checking around advice after execution for method: "+joinPoint.getSignature());
 
 	}
 }

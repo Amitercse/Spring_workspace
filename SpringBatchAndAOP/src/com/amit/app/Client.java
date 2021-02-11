@@ -18,11 +18,11 @@ import com.amit.aop.MockAOPService;
 
 public class Client {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
-	//	runFirstJob(jobLauncher, context);
-	//	runSecondJob(jobLauncher, context);
+		runFirstJob(jobLauncher, context);
+		runSecondJob(jobLauncher, context);
 		aopVerification(context);
 	}
 	
@@ -55,7 +55,7 @@ public class Client {
 			service.checkCompletionOrException();
 		} catch (Exception e) {
 			System.out.println("Custom error");
-		}
+		}  
 		service.checkAroundAdvice();
 		System.out.println("\n================== Executing mock service =====================");
 		mockService.getMockData();
