@@ -56,5 +56,8 @@
             </table>
         </form:form>
     </div>
+    <div align="center">
+    	<a href="/MyApp">Go to home</a>
+    </div>
 </body>
 </html>

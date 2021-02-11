@@ -1,1 +1,1 @@
-create table user_data(user_name varchar(20), name varchar(20), password varchar(500), email varchar(30), date_of_birth date);
+create table user_data(user_name varchar(20) primary key, name varchar(20), password varchar(500), email varchar(30), date_of_birth date);
