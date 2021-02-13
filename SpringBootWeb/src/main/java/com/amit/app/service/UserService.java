@@ -1,7 +1,7 @@
 package com.amit.app.service;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -15,5 +15,9 @@ public interface UserService {
 	public List<User> getAllUsers();
 	
 	public User findById(String userId);
+	
+	public User findByNameAndEmail(String name, String email);
+	
+	public List<User> findByDOBGreaterThan(Date dateOfBirth);
 	
 }

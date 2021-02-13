@@ -1,5 +1,6 @@
 package com.amit.app.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,16 @@ public class UserServiceImpl implements UserService {
 		} else {
 			return new User();
 		}
+	}
+
+	@Override
+	public User findByNameAndEmail(String name, String email) {
+		return userDao.findByNameAndEmail(name, email);
+	}
+
+	@Override
+	public List<User> findByDOBGreaterThan(Date dateOfBirth) {
+		return userDao.findByDateOfBirthGreaterThan(dateOfBirth);
 	}
 
 }
