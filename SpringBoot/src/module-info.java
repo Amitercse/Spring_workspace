@@ -7,6 +7,9 @@ module SpringBoot {
 	requires spring.jdbc;
 	requires java.sql;
 	requires spring.tx;
+	requires spring.batch.core;
+	requires spring.batch.infrastructure;
+	requires javax.batch.api;
 	exports com.amit.dao;
 	exports com.amit.service;
 	exports com.amit.model;

@@ -1,5 +1,10 @@
 package com.amit.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component("report")
+@Scope("prototype")
 public class Report {
 
 	private String userId;

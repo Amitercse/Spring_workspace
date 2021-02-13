@@ -1,0 +1,4 @@
+userId, name, transaction_date, transaction_amount
+user1, First user, 2021-02-07, 10000.00
+user2, Second user,2021-02-07, 12321.00
+user3, Third user, 2021-02-07, 15000.00
