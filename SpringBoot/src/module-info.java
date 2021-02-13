@@ -9,7 +9,9 @@ module SpringBoot {
 	requires spring.tx;
 	exports com.amit.dao;
 	exports com.amit.service;
+	exports com.amit.model;
 	opens com.amit.app;
 	opens com.amit.dao;
 	opens com.amit.service;
+	opens com.amit.model;
 }
