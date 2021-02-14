@@ -7,6 +7,9 @@
 <title>Registration success</title>
 </head>
 <body>
+<div align="right">
+<a href="logout">Logout</a>
+</div>
 <h4>User data saved successfully</h4>
 <a href="/MyApp">Go to home</a>
 </body>

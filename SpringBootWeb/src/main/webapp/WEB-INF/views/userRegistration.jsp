@@ -9,6 +9,9 @@
 <title>Registration Page</title>
 </head>
 <body>
+<div align="right">
+<a href="logout">Logout</a>
+</div>
 <div align="center">
         <form:form action="adminRegister.view" method="post" modelAttribute="user">
             <table border="0">

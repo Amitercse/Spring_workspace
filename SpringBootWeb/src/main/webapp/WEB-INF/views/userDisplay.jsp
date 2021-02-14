@@ -8,6 +8,9 @@
 <title>User details</title>
 </head>
 <body>
+<div align="right">
+<a href="logout">Logout</a>
+</div>
 <h4>List of Users</h4>
 <table border="1">
 <tr>
