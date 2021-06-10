@@ -27,6 +27,8 @@ class SpringBootWebApplicationTests {
 	
 	@Test
 	void getUserList() {
+		String testName="user list";
+		String testDesc="user list";
 		List<User> userList= userService.getAllUsers();
 		assertEquals("User list size should be 4", 4, userList.size());
 	}
