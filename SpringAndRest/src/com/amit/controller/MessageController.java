@@ -2,10 +2,7 @@ package com.amit.controller;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amit.model.DummyMessage;
 import com.amit.model.MessageResource;
 import com.amit.service.MessageService;
 import com.amit.util.ResponseMessage;
@@ -31,10 +30,21 @@ public class MessageController {
 
 	@Autowired
 	private ResponseMessage responseMessage;
+	
+	@PostMapping(value = "/dummy")
+	public ResponseEntity<ResponseMessage> dummyPostMessages(@RequestBody DummyMessage dummyMessage,
+			@RequestHeader("request-id") String requestId) {
+		System.out.println("request-id: " + requestId);
+		System.out.println("dummy message: "+ dummyMessage);
+		responseMessage.setMessageCode(800);
+		responseMessage.setMessage("Message saved successfully");
+		return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
+	}
 
 //	@RequestMapping(value = "/messages", method = RequestMethod.GET)
 	@GetMapping
-	public List<MessageResource> getMessages() {
+	public List<MessageResource> getMessages(@RequestHeader("request-id") String requestId) {
+		System.out.println("request id: "+ requestId);
 		return messageService.getMessages();
 	}
 
@@ -50,7 +60,9 @@ public class MessageController {
 	}
 
 	@PostMapping
-	public ResponseEntity<ResponseMessage> postMessage(@RequestBody MessageResource messageResource) {
+	public ResponseEntity<ResponseMessage> postMessage(@RequestBody MessageResource messageResource,
+			@RequestHeader("request-id") String requestId) {
+		System.out.println("request-id: " + requestId);
 		messageService.saveMessage(messageResource);
 		responseMessage.setMessageCode(800);
 		responseMessage.setMessage("Message saved successfully");
